@@ -1,4 +1,3 @@
-```cpp
 const int potPin = 34;              // Define el pin GPIO 34 donde está conectado el potenciómetro
 const int ledPin = 2;               // Define el pin GPIO 2 donde está conectado el LED
 
@@ -35,4 +34,3 @@ void loop() {                        // Función que se repite continuamente
 
   delay(10);                         // Reduje el delay para que la respuesta sea más instantánea al girar
 }
-```
