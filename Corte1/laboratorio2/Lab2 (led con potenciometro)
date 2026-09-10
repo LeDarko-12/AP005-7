@@ -1,0 +1,35 @@
+const int potPin = 34; 
+const int ledPin = 2;
+
+const int freq = 5000;
+const int resolution = 8; 
+
+// NUEVAS VARIABLES PARA EL CONTROL DE CAMBIOS
+int lastAdcValue = -1;    // Guardará el último valor registrado
+const int umbral = 30;    // Tolerancia para ignorar el "ruido" eléctrico
+
+void setup() {
+  Serial.begin(115200);
+  ledcAttach(ledPin, freq, resolution);
+}
+
+void loop() {
+  int adcValue = analogRead(potPin); 
+  int brightness = map(adcValue, 0, 4095, 0, 255);
+
+  ledcWrite(ledPin, brightness);
+
+  // Condición: Si la diferencia entre el valor nuevo y el viejo es mayor al umbral
+  if (abs(adcValue - lastAdcValue) > umbral) {
+
+    Serial.print("Valor ADC: ");
+    Serial.print(adcValue);
+    Serial.print(" | Brillo LED: ");
+    Serial.println(brightness);
+
+    // Actualizamos el último valor para la siguiente comparación
+    lastAdcValue = adcValue; 
+  }
+
+  delay(10); // Reduje el delay para que la respuesta sea más instantánea al girar
+}
