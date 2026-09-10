@@ -1,35 +1,38 @@
-const int potPin = 34; 
-const int ledPin = 2;
+```cpp
+const int potPin = 34;              // Define el pin GPIO 34 donde está conectado el potenciómetro
+const int ledPin = 2;               // Define el pin GPIO 2 donde está conectado el LED
 
-const int freq = 5000;
-const int resolution = 8; 
+const int freq = 5000;              // Define la frecuencia del PWM en 5000 Hz
+const int resolution = 8;           // Define una resolución de 8 bits para el PWM (valores de 0 a 255)
 
 // NUEVAS VARIABLES PARA EL CONTROL DE CAMBIOS
-int lastAdcValue = -1;    // Guardará el último valor registrado
-const int umbral = 30;    // Tolerancia para ignorar el "ruido" eléctrico
+int lastAdcValue = -1;              // Guardará el último valor registrado
+const int umbral = 30;              // Tolerancia para ignorar el "ruido" eléctrico
 
-void setup() {
-  Serial.begin(115200);
-  ledcAttach(ledPin, freq, resolution);
+void setup() {                       // Función que se ejecuta una sola vez al iniciar el ESP32
+  Serial.begin(115200);             // Inicia la comunicación serial a 115200 baudios
+  ledcAttach(ledPin, freq, resolution); // Configura el pin del LED para utilizar PWM con la frecuencia y resolución indicadas
 }
 
-void loop() {
-  int adcValue = analogRead(potPin); 
-  int brightness = map(adcValue, 0, 4095, 0, 255);
+void loop() {                        // Función que se repite continuamente
+  int adcValue = analogRead(potPin); // Lee el valor analógico del potenciómetro y lo guarda en adcValue
 
-  ledcWrite(ledPin, brightness);
+  int brightness = map(adcValue, 0, 4095, 0, 255); // Convierte el valor ADC de 0-4095 a un valor de brillo de 0-255
+
+  ledcWrite(ledPin, brightness);     // Aplica al LED el nivel de brillo obtenido mediante PWM
 
   // Condición: Si la diferencia entre el valor nuevo y el viejo es mayor al umbral
-  if (abs(adcValue - lastAdcValue) > umbral) {
+  if (abs(adcValue - lastAdcValue) > umbral) { // Comprueba si el cambio del valor ADC es mayor a 30
 
-    Serial.print("Valor ADC: ");
-    Serial.print(adcValue);
-    Serial.print(" | Brillo LED: ");
-    Serial.println(brightness);
+    Serial.print("Valor ADC: ");     // Imprime en el Monitor Serial el texto "Valor ADC: "
+    Serial.print(adcValue);         // Imprime el valor actual leído del potenciómetro
+    Serial.print(" | Brillo LED: "); // Imprime el texto que separa el valor ADC del brillo
+    Serial.println(brightness);      // Imprime el brillo del LED y salta a una nueva línea
 
     // Actualizamos el último valor para la siguiente comparación
-    lastAdcValue = adcValue; 
+    lastAdcValue = adcValue;         // Guarda el valor actual como referencia para la siguiente comparación
   }
 
-  delay(10); // Reduje el delay para que la respuesta sea más instantánea al girar
+  delay(10);                         // Reduje el delay para que la respuesta sea más instantánea al girar
 }
+```
