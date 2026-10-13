@@ -1,1 +1,12 @@
-a
+
+https://www.kaggle.com/code/ledarko/neurona1
+
+https://www.kaggle.com/code/ledarko/neuron1-2
+
+https://www.kaggle.com/code/ledarko/neurona-1-3
+
+https://www.kaggle.com/code/ledarko/neurona-1-1-con-numpy
+
+https://www.kaggle.com/code/ledarko/neurona-1-2-con-numpy
+
+https://www.kaggle.com/code/ledarko/1-3-con-numpy
