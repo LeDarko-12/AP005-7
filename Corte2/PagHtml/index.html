@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AP005-7 | Programación Aplicada</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="logo">
+        <i class='bx bx-code-curly'></i>
+        <span>LeDarko-12 / <strong>AP005-7</strong></span>
+      </div>
+
+      <!-- Los enlaces del menú se generan automáticamente según las carpetas del repo -->
+      <nav class="main-nav">
+        <ul id="nav-cortes"></ul>
+      </nav>
+
+      <a href="https://github.com/LeDarko-12/AP005-7" target="_blank" rel="noopener noreferrer" class="btn-github">
+        <i class='bx bxl-github'></i> Repositorio
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTENIDO DINÁMICO -->
+  <main id="contenedor-repo" class="container">
+    <div class="loading-state">
+      <i class='bx bx-loader-alt bx-spin'></i> Cargando carpetas desde GitHub...
+    </div>
+  </main>
+
+  <!-- CAJA DE DIÁLOGO NATIVA (<dialog>) -->
+  <dialog id="modal-detalle" class="native-modal">
+    <div class="modal-header">
+      <h3 id="modal-titulo">Contenido</h3>
+      <button id="btn-cerrar-x" class="btn-close" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-cuerpo"></div>
+    <div class="modal-footer">
+      <button id="btn-cerrar-modal" class="btn-secondary">Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <span>Programación Aplicada • 2026</span>
+      <a href="https://github.com/LeDarko-12/AP005-7" target="_blank" rel="noopener noreferrer" class="footer-link">
+        <i class='bx bxl-github'></i> github.com/LeDarko-12/AP005-7
+      </a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
